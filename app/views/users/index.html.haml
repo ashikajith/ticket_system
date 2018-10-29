@@ -1,0 +1,27 @@
+%h4 Users List
+
+.col-md-12
+  = link_to 'New User', new_user_path, class: 'btn btn-primary'
+  = link_to 'Create New Project', new_project_path, class: 'btn btn-primary'
+  %button.btn.btn-success Assign User
+%br
+.col-md-12
+  .well
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th First Name
+          %th Last Name
+          %th Role
+      %tbody
+        - @users.each_with_index do |user, index|
+          %tr
+            %td
+              = index + 1
+            %td
+              = user.first_name
+            %td
+              = user.last_name
+            %td
+              = user.role.role_name

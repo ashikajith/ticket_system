@@ -1,0 +1,17 @@
+#login
+  .col-md-6
+    = form_for(:project, url: projects_path, html:{id: 'login-form'}, method: :post) do |f|
+      .form-group
+        %label Project Name
+        = f.text_field :project_name, class: 'form-control'
+      .form-group
+        %label Status
+        = f.text_field :status, class: 'form-control'
+      .form-group
+        %label Description
+        = f.text_area :description, class: 'form-control'
+      .form-group
+        %label Role
+        = f.collection_select :user_id, @project_managers, :id, :first_name
+        %br
+        = f.submit "Create", class: "btn btn-success"

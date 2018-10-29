@@ -1,0 +1,26 @@
+%h4 Project List
+
+.col-md-12
+  = link_to 'Manage Users', users_path, class: 'btn btn-primary'
+  = link_to 'Manage Projects', projects_path, class: 'btn btn-info'
+  %button.btn.btn-success Assign User
+%br
+.col-md-12
+  .well
+    %table.table
+      %thead
+        %tr
+          %th #
+          %th Project Name
+          %th Description
+          %th Status
+          %th Action
+      %tbody
+        - @projects.all.each do |project|
+          %tr
+            %td
+              = project.project_name
+            %td
+              = project.description
+            %td
+              = project.status

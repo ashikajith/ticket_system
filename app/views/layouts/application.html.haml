@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %title
+      TicketSystem
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %nav.navbar.navbar-expand.navbar-dark.bg-dark
+    %a.navbar-brand{:href => root_path} Ticket System
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+    - if user_signed_in?
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle.active{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = 'Welcome ' + current_user.first_name.to_s
+          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            %a.dropdown-item{:href => "#"} Profile
+            %a.dropdown-item{:href => "#"}
+              = 'Role :' + current_user.role.role_name.to_s
+            %a.dropdown-item{:href => "#"} Sign Out
+  %body
+    .container
+      = yield
