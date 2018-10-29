@@ -24,6 +24,7 @@ Things you may want to cover:
   Bundle Install the required gems and Execute the below tasks for Initial Set Up
 
   rake populate_data:populate_roles
+  
   rake populate_data:populate_users
 
   ** Refer rake task for the credentials
